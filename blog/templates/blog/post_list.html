@@ -1,23 +1,5 @@
-<!-- <!DOCTYPE html> -->
 {% extends 'blog/base.html' %}
 {%load static%}
-
-<!-- <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <title>Blog Django Girls</title>
-</head>
-
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-<link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="{% static 'css/blog.css' %}"> -->
-
-<!-- <body> -->
-
 
     {% block content%}
         {% for post in posts %}
@@ -25,13 +7,8 @@
                 <div class="date">
                     published: {{ post.published_date }}
                 </div>
-                <h2><a href="{%url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
-                <p>{{ post.text|linebreaksbr }}</p>
+                <h2><a href="{%url 'post_detail' pk=post.pk %}">{{post.title}}</a></h2>
+                <p>{{ post.text|truncatechars:200 }}</p>
             </div>
         {% endfor %}
-
 {% endblock %}
-
-
-<!-- </body>
-</html> -->

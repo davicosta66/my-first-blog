@@ -34,7 +34,13 @@ def post_edit(request, pk):
              post.author = request.user
              post.published_date = timezone.now()
              post.save()
+             print(post.author)
              return redirect('post_detail', pk=post.pk)
      else:
          form = PostForm(instance=post)
      return render(request, 'blog/post_edit.html', {'form': form})
+
+def post_del(request,pk):
+    post=get_object_or_404(Post,pk=pk)
+    post.delete()
+    return post_list(request)
